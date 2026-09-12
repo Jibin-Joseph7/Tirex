@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Transaction = require('../models/Transaction');
 const Account = require('../models/Account');
 const Budget = require('../models/Budget');
+const Notification = require('../models/Notification');
 
 const applyBalanceChange = async (account, type, amount) => {
   if (type === 'income') account.balance += amount;
@@ -21,7 +22,14 @@ const checkBudgetOverspend = async (userId, category, amount) => {
 
   budget.spent += amount;
   await budget.save();
-  // Notification on overspend is added in commit 9 once the Notification model exists
+
+  if (budget.spent > budget.limit) {
+    await Notification.create({
+      user: userId,
+      type: 'budget_limit',
+      message: `You have exceeded your ${category} budget for this month.`,
+    });
+  }
 };
 
 exports.createTransaction = async (req, res) => {
