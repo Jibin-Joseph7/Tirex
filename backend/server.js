@@ -6,6 +6,8 @@ const authRoutes = require('./src/routes/authRoutes');
 const accountRoutes = require('./src/routes/accountRoutes');
 const transactionRoutes = require('./src//routes/transactionRoutes');
 const budgetRoutes = require('./src/routes/budgetRoutes');
+const investmentRoutes = require('./src/routes/investmentRoutes');
+
 
 const app = express();
 connectDB();
@@ -18,6 +20,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/accounts', accountRoutes);
 app.use('/api/transactions', transactionRoutes);
 app.use('/api/budgets', budgetRoutes);
+app.use('/api/investments', investmentRoutes);
+
 
 
 const PORT = process.env.PORT || 5000;
