@@ -10,6 +10,7 @@ const investmentRoutes = require('./src/routes/investmentRoutes');
 const notificationRoutes = require('./src/routes/notificationRoutes');
 const dashboardRoutes = require('./src/routes/dashboardRoutes');
 const reportRoutes = require('./src/routes/reportRoutes');
+const adminRoutes = require('./src/routes/adminRoutes');
 
 
 
@@ -29,10 +30,13 @@ app.use('/api/investments', investmentRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/reports', reportRoutes);
+app.use('/api/admin', adminRoutes);
 
 
-
-
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: 'Something went wrong' });
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Tirex API running on port ${PORT}`));
