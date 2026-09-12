@@ -9,6 +9,8 @@ const budgetRoutes = require('./src/routes/budgetRoutes');
 const investmentRoutes = require('./src/routes/investmentRoutes');
 const notificationRoutes = require('./src/routes/notificationRoutes');
 const dashboardRoutes = require('./src/routes/dashboardRoutes');
+const reportRoutes = require('./src/routes/reportRoutes');
+
 
 
 
@@ -26,6 +28,7 @@ app.use('/api/budgets', budgetRoutes);
 app.use('/api/investments', investmentRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/reports', reportRoutes);
 
 
 
