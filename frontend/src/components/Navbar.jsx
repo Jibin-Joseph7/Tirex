@@ -11,17 +11,23 @@ const Navbar = () => {
   };
 
   return (
-    <nav style={{ display: 'flex', gap: 16, padding: '1rem', borderBottom: '1px solid var(--border)' }}>
-      <strong>Tirex</strong>
+    <nav style={{
+      display: 'flex', alignItems: 'center', gap: 20, padding: '0.9rem 1.5rem',
+      background: 'var(--navy)', color: '#fff',
+    }}>
+      <strong style={{ fontSize: '1.1rem', letterSpacing: '0.02em' }}>Tirex</strong>
       {user && (
         <>
-          <Link to="/dashboard">Dashboard</Link>
-          <Link to="/accounts">Accounts</Link>
-          <Link to="/transactions">Transactions</Link>
-          <span style={{ marginLeft: 'auto' }}>
-            <button onClick={toggleDarkMode}>🌓</button>
-            <span style={{ margin: '0 8px' }}>{user.name}</span>
-            <button onClick={logout}>Logout</button>
+          <Link to="/dashboard" style={{ color: '#EAF0FA' }}>Dashboard</Link>
+          <Link to="/accounts" style={{ color: '#EAF0FA' }}>Accounts</Link>
+          <Link to="/transactions" style={{ color: '#EAF0FA' }}>Transactions</Link>
+          <Link to="/budgets" style={{ color: '#EAF0FA' }}>Budgets</Link>
+          <Link to="/investments" style={{ color: '#EAF0FA' }}>Investments</Link>
+          {user.role === 'admin' && <Link to="/admin" style={{ color: 'var(--accent)' }}>Admin</Link>}
+          <span style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 12 }}>
+            <button onClick={toggleDarkMode} style={{ background: 'rgba(255,255,255,0.12)' }}>Mode</button>
+            <span>{user.name}</span>
+            <button onClick={logout} style={{ background: 'var(--danger)' }}>Logout</button>
           </span>
         </>
       )}
