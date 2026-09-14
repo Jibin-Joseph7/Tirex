@@ -17,6 +17,7 @@ const Navbar = () => {
         <>
           <Link to="/dashboard">Dashboard</Link>
           <Link to="/accounts">Accounts</Link>
+          <Link to="/transactions">Transactions</Link>
           <span style={{ marginLeft: 'auto' }}>
             <button onClick={toggleDarkMode}>🌓</button>
             <span style={{ margin: '0 8px' }}>{user.name}</span>
